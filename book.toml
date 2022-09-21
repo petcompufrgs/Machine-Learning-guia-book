@@ -1,0 +1,6 @@
+[book]
+authors = ["PET Computação UFRGS"]
+language = "pt"
+multilingual = false
+src = "src"
+title = "Guia de Machine Learning"
