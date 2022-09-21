@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<html lang="pt" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Redes Neurais - Guia de Machine Learning</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="guia_intro.html">Guia de Machine Learning</a></li><li class="chapter-item expanded "><a href="introducao.html"><strong aria-hidden="true">1.</strong> Introdução</a></li><li class="chapter-item expanded "><a href="redes_neurais.html" class="active"><strong aria-hidden="true">2.</strong> Redes Neurais</a></li><li class="chapter-item expanded "><a href="pytorch.html"><strong aria-hidden="true">3.</strong> PyTorch</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Guia de Machine Learning</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="redes-neurais"><a class="header" href="#redes-neurais">Redes Neurais</a></h2>
+<p>Regressão linear e regressão logística são apenas os dois modelos mais simples de Machine Learning. Com esses modelos, temos claras limitações devido à falta de complexidade. Nesse contexto, as redes neurais foram desenvolvidas para que se pudesse construir modelos muito mais profundos, capazes de resolver uma gama muito maior de problemas. <br>
+Para conseguir entender as redes neurais, é extremamente necessário que você, após entender a teoria, bote a mão na massa e tente fazer suas próprias redes, a fim de entender como todo o processo dela funciona. <br>
+Abaixo temos duas abas, recomendamos que você veja os vídeos para aprender a teoria, e depois tente fazer os códigos por conta, apenas consultando quando surgirem dúvidas. </p>
+<h3 id="recomendações"><a class="header" href="#recomendações">Recomendações</a></h3>
+<p><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi">Redes neurais - 3b1b</a>: é uma ótima série de vídeos para se ter uma visão inicial sobre os conceitos de Redes Neurais, principalmente. Recomenda-se começar o estudo de Redes Neurais com essa playlist.</p>
+<p><a href="https://www.coursera.org/learn/advanced-learning-algorithms?specialization=machine-learning-introduction#syllabus">Coursera - Advanced Learning Algorithms</a>: continuação do curso visto na sessão anterior, agora focando em Redes Neurais e conselhos em relação à Machine Learning no geral. </p>
+<h3 id="exercícios-para-fixação"><a class="header" href="#exercícios-para-fixação">Exercícios para fixação</a></h3>
+<p>Redes neurais são extremamente complicadas de entender sem praticar, principalmente a backpropagation, que envolve muita matemática. 
+Por causa disso recomenda-se tentar implementar redes neurais à mão, o qual é o objeto dos exercícios a seguir<br></p>
+<p><strong>Exercício 1</strong>:<br>
+Desenvolva uma rede neural trivial para obter o valor desejado de y, conforme imagem abaixo:
+<img src="img/exercise_1.png" alt="Exercicio 1" /></p>
+<p>O <em>learning rate</em> e o número de épocas fica a seu critério. Os valores da imagem são apenas como referência.
+É recomendado tentar resolver esse exercício de maneira simples, apenas utilizando um laço <em>for</em> para iterar por múltiplas épocas do treino. O objetivo desse exercício é ter um primeiro contato com o forward e backward pass, observando como muda a loss, o peso e o valor de saída da rede.</p>
+<p><strong>Exercício 2</strong>:<br>
+Modifique o exercício anterior, adicionando uma camada oculta com 2 neurônios e um bias para cada camada, conforme a imagem abaixo:
+<img src="img/exercise_2.png" alt="Exercicio 2" />
+Preste atenção em como a loss cai em comparação ao exercício anterior. </p>
+<p><strong>Exercício 3</strong>:<br>
+Construa uma rede neural que simule o portão lógico XOR. </p>
+<pre><code class="language-python"># Tabela verdade XOR
+x = [[0,0], [1, 0], [1, 1], [0, 1]]  
+y = [0, 0, 1, 0]
+</code></pre>
+<p>Para resolver esse problema, é necessário utilizar os conhecimentos obtidos dos exercícios anteriores de forward e backward pass, e adicionar a função de ativação Sigmoide na camada de saída, já que o XOR não é linearmente separável. Diagrama da rede:<br>
+<img src="img/exercise_3.png" alt="Exercicio 3" /><br>
+Os pesos devem ser inicializados utilizando a função <a href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.randn.html">randn do NumPy</a> e os bias devem ser 1. <br>
+Para esse exercício, utilize o learning rate de 0.2 e 5000 épocas como referência. <br>
+É esperado que ao final do treino a loss convirja para próximo de 0, e a rede neural acerte todas combinações da XOR.</p>
+<p><strong>Exercício 4</strong>:<br>
+Generalize o exercício anterior, adicionando uma classe para as camadas e outra para a própria rede neural.<br>
+Segue abaixo uma sugestão para a interface das classes:<br></p>
+<pre><code class="language-python">class Layer:  
+    def __init__(self, n_of_inputs, n_of_neurons, activation, bias):  
+        pass
+  
+    def forward(self, x):  
+        pass
+  
+    def backward(self, chain_rule_derivatives):  
+	pass
+  
+ class NeuralNetwork:  
+    def __init__(self, input_size, lr):  
+        pass
+  
+    def forward(self, x):  
+        pass
+  
+    def backward(self, loss_derivative):  
+        pass
+  
+    def append_layer(self, output_number, activation, bias):  
+	pass
+</code></pre>
+<p>Utilize a biblioteca NumPy para construir as matrizes dos pesos e dos bias.</p>
+<p><strong>Exercício 5</strong>:<br>
+Utilizando a rede construída no exercício anterior, construa um modelo para classificar as imagens dos dígitos escritos à mão do <a href="https://en.wikipedia.org/wiki/MNIST_database">dataset MNIST</a>. 
+Baixe o dataset <a href="http://yann.lecun.com/exdb/mnist/">diretamente</a> ou utilizando o <a href="http://yann.lecun.com/exdb/mnist/">PyTorch</a></p>
+<h3 id="resoluções-dos-exercícios"><a class="header" href="#resoluções-dos-exercícios">Resoluções dos exercícios</a></h3>
+<p>É fundamental olhar as resoluções somente após tentar fazer os exercícios por conta. <br>
+<a href="https://github.com/petcomputacaoufrgs/Machine-Learning-/blob/main/C%C3%B3digos/dummy_neural_network.ipynb">Exercícios 1 e 2</a><br>
+<a href="https://github.com/petcomputacaoufrgs/Machine-Learning-/blob/main/C%C3%B3digos/xor_simple.ipynb">Exercício 3</a><br>
+<a href="https://github.com/petcomputacaoufrgs/Machine-Learning-/blob/main/C%C3%B3digos/xor_from_scratch.ipynb">Exercício 4</a><br>
+<a href="https://github.com/petcomputacaoufrgs/Machine-Learning-/blob/main/C%C3%B3digos/mnist_from_scratch.ipynb">Exercício 5</a><br></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="introducao.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="pytorch.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="introducao.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="pytorch.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
